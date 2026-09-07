@@ -544,15 +544,10 @@ function FinalCta() {
           </p>
           <CtaLink>Quero estruturar minha operação comercial</CtaLink>
         </div>
-        <div className="final-media" data-reveal aria-hidden="true">
-          <img
-            src="/images/silvio/silvio-speaker.jpg"
-            alt=""
-            width="972"
-            height="1215"
-            loading="lazy"
-            decoding="async"
-          />
+        <div className="final-media flex items-center justify-center bg-surface-strong" data-reveal aria-hidden="true">
+          <span className="text-muted-foreground text-xs font-bold uppercase tracking-widest text-center px-4 opacity-70 z-10 relative">
+            [ Área reservada para foto ]
+          </span>
         </div>
       </div>
     </section>
