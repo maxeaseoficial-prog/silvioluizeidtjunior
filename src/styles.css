@@ -135,12 +135,30 @@
   body {
     margin: 0;
     background:
-      radial-gradient(circle at 74% 0%, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 28rem),
-      linear-gradient(180deg, var(--color-background), color-mix(in oklab, var(--color-background) 92%, black));
+      radial-gradient(
+        circle at 74% 0%,
+        color-mix(in oklab, var(--color-primary) 16%, transparent),
+        transparent 28rem
+      ),
+      linear-gradient(
+        180deg,
+        var(--color-background),
+        color-mix(in oklab, var(--color-background) 92%, black)
+      );
     color: var(--color-foreground);
     font-family: var(--font-sans);
     letter-spacing: 0;
     text-rendering: geometricPrecision;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary) 72%, black);
+    color: white;
+  }
+
+  * {
+    scrollbar-color: var(--color-line) var(--color-background);
+    scrollbar-width: thin;
   }
 
   a {
@@ -170,7 +188,11 @@
 }
 
 .section-light {
-  background: linear-gradient(180deg, color-mix(in oklab, var(--color-surface) 82%, black), var(--color-background));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-surface) 82%, black),
+    var(--color-background)
+  );
 }
 
 .section-label {
@@ -214,7 +236,11 @@
   gap: 0.8rem;
   border: 1px solid color-mix(in oklab, var(--color-primary) 58%, var(--color-border));
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--color-primary), color-mix(in oklab, var(--color-primary-hover) 82%, var(--color-primary)));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    color-mix(in oklab, var(--color-primary-hover) 82%, var(--color-primary))
+  );
   color: var(--color-primary-foreground);
   padding: 1rem 1.25rem;
   font-size: 0.78rem;
@@ -222,7 +248,10 @@
   letter-spacing: 0.08em;
   line-height: 1.25;
   text-transform: uppercase;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
 }
 
 .cta-link:hover {
@@ -243,6 +272,7 @@
   position: relative;
   min-height: 100svh;
   padding-bottom: 2.5rem;
+  overflow: clip;
   isolation: isolate;
 }
 
@@ -252,21 +282,32 @@
   z-index: -2;
   content: "";
   background:
-    radial-gradient(circle at 76% 32%, color-mix(in oklab, var(--color-primary) 22%, transparent), transparent 24rem),
-    linear-gradient(90deg, var(--color-background) 0%, color-mix(in oklab, var(--color-background) 90%, var(--color-primary)) 100%);
+    radial-gradient(
+      circle at 76% 32%,
+      color-mix(in oklab, var(--color-primary) 22%, transparent),
+      transparent 24rem
+    ),
+    linear-gradient(
+      90deg,
+      var(--color-background) 0%,
+      color-mix(in oklab, var(--color-background) 90%, var(--color-primary)) 100%
+    );
 }
 
 .hero-grid,
 .method-grid,
 .offer-grid,
-.final-lines,
-.photo-grid {
+.final-lines {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background-image:
     linear-gradient(color-mix(in oklab, var(--color-line) 34%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklab, var(--color-line) 28%, transparent) 1px, transparent 1px);
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-line) 28%, transparent) 1px,
+      transparent 1px
+    );
   background-size: 4rem 4rem;
   mask-image: linear-gradient(180deg, transparent, black 14%, black 72%, transparent);
   opacity: 0.26;
@@ -325,7 +366,7 @@
 
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(20rem, 0.78fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(24rem, 0.76fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
   padding-block: clamp(2.2rem, 4vw, 4.5rem) 2rem;
@@ -337,10 +378,10 @@
 
 .hero h1 {
   margin: 1.3rem 0 0;
-  font-size: clamp(4.2rem, 13vw, 9.8rem);
+  font-size: clamp(4rem, 8.2vw, 6rem);
   font-weight: 800;
-  letter-spacing: 0;
-  line-height: 0.86;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
   text-transform: uppercase;
 }
 
@@ -365,6 +406,9 @@
 }
 
 .hero-proofline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
   margin-top: 1.35rem;
   color: var(--color-muted-foreground);
   font-size: 0.9rem;
@@ -373,72 +417,75 @@
   text-transform: uppercase;
 }
 
+.hero-proofline span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-proofline span:not(:last-child)::after {
+  width: 1.8rem;
+  height: 1px;
+  margin-inline: 0.65rem;
+  content: "";
+  background: var(--color-line);
+}
+
 .hero-photo-wrap {
   position: relative;
   min-width: 0;
+  align-self: end;
 }
 
 .hero-photo-wrap::before {
   position: absolute;
-  inset: 7% -4% 7% 10%;
+  inset: 9% -8% 4% 15%;
   z-index: -1;
   content: "";
   border: 1px solid color-mix(in oklab, var(--color-primary) 32%, transparent);
-  border-radius: var(--radius-lg);
+  background: color-mix(in oklab, var(--color-primary) 8%, transparent);
 }
 
-.photo-placeholder {
+.portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-portrait {
   position: relative;
+  z-index: 1;
+  max-height: min(72svh, 45rem);
+  object-fit: cover;
+  object-position: 50% 16%;
+  filter: saturate(0.84) contrast(1.06);
+  mask-image: linear-gradient(180deg, black 0%, black 78%, transparent 100%);
+}
+
+.hero-photo-caption {
+  position: absolute;
+  right: -0.5rem;
+  bottom: 3.5rem;
+  z-index: 2;
   display: grid;
-  min-height: clamp(30rem, 52vw, 43rem);
-  place-items: end start;
-  overflow: hidden;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-lg);
-  background:
-    linear-gradient(145deg, color-mix(in oklab, var(--color-surface-strong) 70%, black), color-mix(in oklab, var(--color-primary) 16%, var(--color-background))),
-    var(--color-surface);
-  padding: clamp(1.2rem, 3vw, 2rem);
+  gap: 0.35rem;
+  border-top: 1px solid var(--color-primary-hover);
+  background: color-mix(in oklab, var(--color-background) 88%, transparent);
+  padding: 0.9rem 1rem;
+  backdrop-filter: blur(10px);
 }
 
-.photo-placeholder::before {
-  position: absolute;
-  right: 9%;
-  bottom: 0;
-  width: 52%;
-  height: 72%;
-  content: "";
-  border: 1px solid color-mix(in oklab, var(--color-primary) 28%, transparent);
-  border-bottom: 0;
-  border-radius: 46% 46% 0 0;
-  background: linear-gradient(180deg, color-mix(in oklab, var(--color-foreground) 13%, transparent), transparent 72%);
-  opacity: 0.52;
-}
-
-.photo-placeholder-compact {
-  min-height: 34rem;
-}
-
-.photo-mark {
-  position: absolute;
-  top: 1.4rem;
-  right: 1.4rem;
-  color: color-mix(in oklab, var(--color-primary-hover) 46%, transparent);
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 0.8;
-}
-
-.photo-placeholder p {
-  position: relative;
-  max-width: 13rem;
+.hero-photo-caption span {
   color: var(--color-muted-foreground);
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.hero-photo-caption strong {
+  color: var(--color-foreground);
+  font-size: 1.3rem;
+  letter-spacing: 0.14em;
 }
 
 .scroll-cue {
@@ -529,7 +576,11 @@
 .offer-section,
 .final-cta {
   overflow: clip;
-  background: linear-gradient(180deg, var(--color-background), color-mix(in oklab, var(--color-surface) 72%, black));
+  background: linear-gradient(
+    180deg,
+    var(--color-background),
+    color-mix(in oklab, var(--color-surface) 72%, black)
+  );
 }
 
 .section-heading-wide {
@@ -736,6 +787,39 @@
   gap: clamp(2rem, 6vw, 5rem);
 }
 
+.authority-photo {
+  position: relative;
+  min-width: 0;
+}
+
+.authority-photo::before {
+  position: absolute;
+  inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  z-index: 0;
+  content: "";
+  border: 1px solid color-mix(in oklab, var(--color-primary) 32%, var(--color-line));
+}
+
+.authority-portrait {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: saturate(0.8) contrast(1.05);
+}
+
+.authority-photo-index {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  color: var(--color-foreground);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
 .authority-copy {
   min-width: 0;
 }
@@ -851,13 +935,26 @@
   text-transform: uppercase;
 }
 
-.offer-pending {
-  margin-bottom: 1.4rem;
+.offer-principles {
+  display: grid;
+  margin-bottom: 1.6rem;
   border-top: 1px solid var(--color-line);
+}
+
+.offer-principles span {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: center;
+  min-height: 3.8rem;
   border-bottom: 1px solid var(--color-line);
-  padding-block: 1.4rem;
-  color: var(--color-muted-foreground);
-  line-height: 1.65;
+  color: var(--color-foreground);
+  font-weight: 700;
+}
+
+.offer-principles svg {
+  width: 1.1rem;
+  color: var(--color-primary-hover);
 }
 
 .offer-panel .cta-link {
@@ -962,11 +1059,111 @@
   line-height: 1.7;
 }
 
+.faq-list details[open] p {
+  animation: faq-in 240ms ease-out both;
+}
+
 .final-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.62fr);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.58fr) minmax(12rem, 0.36fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: end;
+}
+
+.final-media {
+  position: relative;
+  align-self: stretch;
+  min-height: 24rem;
+  overflow: hidden;
+}
+
+.final-media::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent 48%, var(--color-background));
+}
+
+.final-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: saturate(0.75) contrast(1.08);
+}
+
+.motion-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 620ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+
+.motion-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes faq-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-hero-sequence] > * {
+    animation: hero-in 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  [data-hero-sequence] > :nth-child(2) {
+    animation-delay: 70ms;
+  }
+  [data-hero-sequence] > :nth-child(3) {
+    animation-delay: 140ms;
+  }
+  [data-hero-sequence] > :nth-child(4) {
+    animation-delay: 210ms;
+  }
+  [data-hero-sequence] > :nth-child(5) {
+    animation-delay: 280ms;
+  }
+  [data-hero-sequence] > :nth-child(6) {
+    animation-delay: 350ms;
+  }
+
+  [data-hero-photo] {
+    animation: hero-photo-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-photo-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem) scale(0.985);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .final-words {
@@ -1063,11 +1260,16 @@
   }
 
   .hero-photo-wrap {
-    order: -1;
+    width: min(100%, 34rem);
+    margin-inline: auto;
   }
 
-  .photo-placeholder {
-    min-height: 27rem;
+  .hero-portrait {
+    max-height: 34rem;
+  }
+
+  .authority-photo::before {
+    inset: 0.75rem 0 -0.75rem 0.75rem;
   }
 
   .comparison-axis {
@@ -1110,7 +1312,7 @@
   }
 
   .hero h1 {
-    font-size: clamp(3.5rem, 20vw, 5.4rem);
+    font-size: clamp(3.25rem, 18vw, 5rem);
   }
 
   .hero-description {
@@ -1129,8 +1331,13 @@
     line-height: 1.6;
   }
 
-  .photo-placeholder {
-    min-height: 24rem;
+  .hero-portrait {
+    max-height: 29rem;
+  }
+
+  .hero-photo-caption {
+    right: 0;
+    bottom: 2rem;
   }
 
   .problem-list,
@@ -1180,6 +1387,10 @@
   .footer-links {
     justify-content: flex-start;
   }
+
+  .final-media {
+    min-height: 22rem;
+  }
 }
 
 @media (max-width: 430px) {
@@ -1204,7 +1415,27 @@
     width: 2rem;
   }
 
-  .photo-placeholder {
-    min-height: 21.5rem;
+  .hero-photo-caption {
+    padding: 0.7rem 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
