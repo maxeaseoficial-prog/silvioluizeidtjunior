@@ -9,6 +9,7 @@ import {
   Target,
   Users,
 } from "lucide-react";
+import type { ReactNode } from "react";
 
 const problems = [
   "Cada vendedor trabalha de uma forma",
@@ -105,7 +106,7 @@ const faqs = [
   },
 ];
 
-function CtaLink({ children, secondary = false }: { children: React.ReactNode; secondary?: boolean }) {
+function CtaLink({ children, secondary = false }: { children: ReactNode; secondary?: boolean }) {
   return (
     <a
       href="#oferta"
@@ -117,7 +118,7 @@ function CtaLink({ children, secondary = false }: { children: React.ReactNode; s
   );
 }
 
-function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
+function SectionLabel({ number, children }: { number: string; children: ReactNode }) {
   return (
     <div className="section-label">
       <span>{number}</span>
