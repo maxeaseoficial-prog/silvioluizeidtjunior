@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
-      { property: "og:image", content: "/images/silvio/hero-psv-clean.png" },
+      { property: "og:image", content: "/images/silvio/hero-stage-clean.png" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),

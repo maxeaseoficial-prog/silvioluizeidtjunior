@@ -191,58 +191,42 @@ function RevealMotion() {
 function Hero() {
   return (
     <header id="inicio" className="hero">
-      <div className="hero-desktop-art" aria-hidden="true">
+      <picture className="hero-backdrop" aria-hidden="true">
+        <source media="(max-width: 900px)" srcSet="/images/silvio/silvio-speaker.jpg" />
         <img
-          src="/images/silvio/hero-psv-clean.png"
+          src="/images/silvio/hero-stage-clean.png"
           alt=""
-          width="1672"
+          width="1671"
           height="941"
           loading="eager"
           fetchPriority="high"
           decoding="async"
         />
-      </div>
+      </picture>
+      <div className="hero-shade" aria-hidden="true" />
 
-      <div className="hero-semantic">
-        <h1>Método PSV — Processo, Sistema e Vendas</h1>
-        <p>
+      <div className="hero-native page-shell" data-hero-sequence>
+        <p className="hero-presenter">Silvio Luiz Eidt Junior apresenta</p>
+        <h1>
+          <span className="hero-method">Método</span>
+          <span className="hero-psv">
+            PS<span>V</span>
+            <b aria-hidden="true">:</b>
+          </span>
+        </h1>
+        <p className="hero-signature">
+          Processo, Sistema e <strong>Vendas.</strong>
+        </p>
+        <p className="hero-description">
           Estruture sua operação comercial com processos claros, gestão e um sistema de vendas
           preparado para gerar resultados previsíveis.
         </p>
-      </div>
-
-      <a className="hero-desktop-cta" href="#contato">
-        <span>Quero estruturar minha equipe de vendas</span>
-        <ArrowRight aria-hidden="true" />
-      </a>
-
-      <div className="hero-mobile">
-        <div className="hero-mobile-photo" aria-hidden="true">
-          <Portrait
-            src="/images/silvio/silvio-speaker.jpg"
-            alt=""
-            className="hero-portrait"
-            eager
-          />
-        </div>
-        <div className="hero-mobile-content page-shell">
-          <p className="eyebrow">Silvio Luiz Eidt Junior apresenta</p>
-          <h1>
-            <small>Método</small>
-            <span>PSV</span>
-          </h1>
-          <p className="hero-signature">Processo, Sistema e Vendas.</p>
-          <p className="hero-description">
-            Estruture sua operação comercial com processos claros, gestão e um sistema de vendas
-            preparado para gerar resultados previsíveis.
-          </p>
-          <CtaLink>Quero estruturar minha equipe de vendas</CtaLink>
-          <div className="hero-proofline" aria-label="Processo, Gestão, Execução e Vendas">
-            <span>Processo</span>
-            <span>Gestão</span>
-            <span>Execução</span>
-            <span>Vendas</span>
-          </div>
+        <CtaLink>Quero estruturar minha equipe de vendas</CtaLink>
+        <div className="hero-proofline" aria-label="Processo, Gestão, Execução e Vendas">
+          <span>Processo</span>
+          <span>Gestão</span>
+          <span>Execução</span>
+          <span>Vendas</span>
         </div>
       </div>
     </header>
