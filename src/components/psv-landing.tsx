@@ -1,5 +1,4 @@
 import {
-  ArrowDown,
   ArrowRight,
   BarChart3,
   Building2,
@@ -110,7 +109,7 @@ const faqs = [
 
 function CtaLink({ children, secondary = false }: { children: ReactNode; secondary?: boolean }) {
   return (
-    <a href="#oferta" className={secondary ? "cta-link cta-link-secondary" : "cta-link"}>
+    <a href="#contato" className={secondary ? "cta-link cta-link-secondary" : "cta-link"}>
       <span>{children}</span>
       <ArrowRight aria-hidden="true" className="size-5 shrink-0" />
     </a>
@@ -187,23 +186,45 @@ function RevealMotion() {
 
 function Hero() {
   return (
-    <header className="hero">
-      <div className="hero-grid" aria-hidden="true" />
-      <nav className="site-nav page-shell" aria-label="Navegação principal">
-        <a href="#inicio" className="brand" aria-label="Método PSV — início">
-          <span className="brand-monogram">PSV</span>
-          <span className="brand-copy">Processo · Sistema · Vendas</span>
-        </a>
-        <a href="#metodo" className="nav-link">
-          Conheça o método
-        </a>
-      </nav>
+    <header id="inicio" className="hero">
+      <div className="hero-desktop-art" aria-hidden="true">
+        <img
+          src="/images/silvio/hero-psv-reference.png"
+          alt=""
+          width="1672"
+          height="941"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
 
-      <div id="inicio" className="hero-content page-shell">
-        <div className="hero-copy" data-hero-sequence>
+      <div className="hero-semantic">
+        <h1>Método PSV — Processo, Sistema e Vendas</h1>
+        <p>
+          Estruture sua operação comercial com processos claros, gestão e um sistema de vendas
+          preparado para gerar resultados previsíveis.
+        </p>
+      </div>
+
+      <a className="hero-desktop-cta" href="#contato">
+        <span className="sr-only">Quero estruturar minha equipe de vendas</span>
+      </a>
+
+      <div className="hero-mobile">
+        <div className="hero-mobile-photo" aria-hidden="true">
+          <Portrait
+            src="/images/silvio/silvio-speaker.jpg"
+            alt=""
+            className="hero-portrait"
+            eager
+          />
+        </div>
+        <div className="hero-mobile-content page-shell">
           <p className="eyebrow">Silvio Luiz Eidt Junior apresenta</p>
           <h1>
-            Método <span>PSV</span>
+            <small>Método</small>
+            <span>PSV</span>
           </h1>
           <p className="hero-signature">Processo, Sistema e Vendas.</p>
           <p className="hero-description">
@@ -218,22 +239,7 @@ function Hero() {
             <span>Vendas</span>
           </div>
         </div>
-        <div className="hero-photo-wrap" data-hero-photo>
-          <Portrait
-            src="/images/silvio/silvio-hero.jpg"
-            alt="Silvio Luiz Eidt Junior em retrato executivo"
-            className="hero-portrait"
-            eager
-          />
-          <div className="hero-photo-caption" aria-hidden="true">
-            <span>Estrutura comercial</span>
-            <strong>PSV</strong>
-          </div>
-        </div>
       </div>
-      <a className="scroll-cue" href="#problema" aria-label="Ir para a próxima seção">
-        <ArrowDown aria-hidden="true" className="size-4" />
-      </a>
     </header>
   );
 }
@@ -602,10 +608,6 @@ export function PsvLanding() {
         <TransformationSection />
         <StructureSection />
         <AuthoritySection />
-        <AudienceSection />
-        <OfferSection />
-        <ObjectionsSection />
-        <FaqSection />
         <FinalCta />
       </main>
       <Footer />
