@@ -10,6 +10,7 @@ import {
   TrendingUp,
   Users,
   Workflow,
+  X,
 } from "lucide-react";
 import { useEffect, type CSSProperties, type ReactNode } from "react";
 
@@ -315,15 +316,29 @@ function TransformationSection() {
     <section className="section transformation-section">
       <div className="page-shell">
         <SectionLabel number="03">A transformação</SectionLabel>
-        <h2 className="transformation-title">
-          De uma equipe que apenas vende para uma operação comercial estruturada.
-        </h2>
+        <div className="transformation-head">
+          <h2 className="transformation-title">
+            De uma equipe que apenas vende para uma operação <span>comercial estruturada.</span>
+          </h2>
+          <p className="transformation-intro">
+            O Método PSV organiza a operação comercial para que processo, gestão e execução
+            trabalhem na mesma direção.
+          </p>
+        </div>
         <div className="comparison" data-reveal>
           <div className="comparison-side comparison-before">
-            <p className="comparison-label">Antes</p>
+            <div className="comparison-heading">
+              <p className="comparison-label">Antes</p>
+              <span>Operação sem processo definido</span>
+            </div>
             <ul>
               {before.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <span className="comparison-icon" aria-hidden="true">
+                    <X />
+                  </span>
+                  {item}
+                </li>
               ))}
             </ul>
           </div>
@@ -334,11 +349,16 @@ function TransformationSection() {
             </div>
           </div>
           <div className="comparison-side comparison-after">
-            <p className="comparison-label">Com o PSV</p>
+            <div className="comparison-heading">
+              <p className="comparison-label">Com o PSV</p>
+              <span>Processo, gestão e execução alinhados</span>
+            </div>
             <ul>
               {after.map((item) => (
                 <li key={item}>
-                  <Check aria-hidden="true" />
+                  <span className="comparison-icon" aria-hidden="true">
+                    <Check />
+                  </span>
                   {item}
                 </li>
               ))}
