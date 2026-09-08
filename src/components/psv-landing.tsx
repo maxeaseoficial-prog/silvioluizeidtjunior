@@ -329,7 +329,9 @@ function TransformationSection() {
           </div>
           <div className="comparison-axis" aria-hidden="true">
             <span>Estrutura</span>
-            <ArrowRight />
+            <div className="comparison-axis-mark">
+              <ArrowRight />
+            </div>
           </div>
           <div className="comparison-side comparison-after">
             <p className="comparison-label">Com o PSV</p>
