@@ -7,6 +7,7 @@ import {
   Instagram,
   Linkedin,
   Target,
+  TrendingUp,
   Users,
   Workflow,
 } from "lucide-react";
@@ -26,16 +27,19 @@ const pillars = [
     number: "01",
     title: "Processo",
     text: "Estrutura, etapas, responsabilidades e padrões claros para a operação comercial.",
+    icon: Workflow,
   },
   {
     number: "02",
     title: "Sistema",
     text: "Organização, acompanhamento, indicadores e gestão da execução.",
+    icon: BarChart3,
   },
   {
     number: "03",
     title: "Vendas",
     text: "Transformar processo e gestão em execução comercial orientada a resultado.",
+    icon: Target,
   },
 ];
 
@@ -56,12 +60,12 @@ const after = [
 ];
 
 const structure = [
-  "Diagnóstico comercial",
-  "Estruturação do processo",
-  "Organização da operação",
-  "Gestão da equipe",
-  "Indicadores e acompanhamento",
-  "Evolução da execução comercial",
+  { title: "Diagnóstico comercial", icon: Target },
+  { title: "Estruturação do processo", icon: Workflow },
+  { title: "Organização da operação", icon: Building2 },
+  { title: "Gestão da equipe", icon: Users },
+  { title: "Indicadores e acompanhamento", icon: BarChart3 },
+  { title: "Evolução da execução comercial", icon: TrendingUp },
 ];
 
 const audiences = [
@@ -189,7 +193,7 @@ function Hero() {
     <header id="inicio" className="hero">
       <div className="hero-desktop-art" aria-hidden="true">
         <img
-          src="/images/silvio/hero-psv-reference.png"
+          src="/images/silvio/hero-psv-clean.png"
           alt=""
           width="1672"
           height="941"
@@ -208,7 +212,8 @@ function Hero() {
       </div>
 
       <a className="hero-desktop-cta" href="#contato">
-        <span className="sr-only">Quero estruturar minha equipe de vendas</span>
+        <span>Quero estruturar minha equipe de vendas</span>
+        <ArrowRight aria-hidden="true" />
       </a>
 
       <div className="hero-mobile">
@@ -286,23 +291,28 @@ function MethodSection() {
           <p>Uma estrutura comercial construída sobre três fundamentos.</p>
         </div>
         <div className="pillar-flow">
-          {pillars.map((pillar, index) => (
-            <article
-              className="pillar"
-              key={pillar.title}
-              data-reveal
-              style={{ "--reveal-delay": `${index * 100}ms` } as CSSProperties}
-            >
-              <div className="pillar-top">
-                <span className="pillar-number">{pillar.number}</span>
-                {index < pillars.length - 1 && (
-                  <ArrowRight aria-hidden="true" className="pillar-arrow" />
-                )}
-              </div>
-              <h3>{pillar.title}</h3>
-              <p>{pillar.text}</p>
-            </article>
-          ))}
+          {pillars.map((pillar, index) => {
+            const Icon = pillar.icon;
+
+            return (
+              <article
+                className="pillar"
+                key={pillar.title}
+                data-reveal
+                style={{ "--reveal-delay": `${index * 100}ms` } as CSSProperties}
+              >
+                <div className="pillar-top">
+                  <span className="pillar-number">{pillar.number}</span>
+                  <Icon aria-hidden="true" className="pillar-icon" />
+                  {index < pillars.length - 1 && (
+                    <ArrowRight aria-hidden="true" className="pillar-arrow" />
+                  )}
+                </div>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.text}</p>
+              </article>
+            );
+          })}
         </div>
         <div className="method-signature" aria-label="Processo leva ao sistema, que leva a vendas">
           <span>Processo</span>
@@ -361,15 +371,17 @@ function StructureSection() {
         <SectionLabel number="04">Dentro da operação</SectionLabel>
         <h2 className="structure-title">O que estruturamos dentro da sua operação comercial</h2>
         <ol className="timeline">
-          {structure.map((item, index) => (
+          {structure.map(({ title, icon: Icon }, index) => (
             <li
-              key={item}
+              key={title}
               data-reveal
               style={{ "--reveal-delay": `${index * 65}ms` } as CSSProperties}
             >
               <span className="timeline-number">{String(index + 1).padStart(2, "0")}</span>
-              <span className="timeline-dot" aria-hidden="true" />
-              <h3>{item}</h3>
+              <span className="timeline-icon" aria-hidden="true">
+                <Icon />
+              </span>
+              <h3>{title}</h3>
             </li>
           ))}
         </ol>
@@ -388,9 +400,6 @@ function AuthoritySection() {
             alt="Retrato profissional de Silvio Luiz Eidt Junior"
             className="authority-portrait"
           />
-          <span className="authority-photo-index" aria-hidden="true">
-            SLEJ / 01
-          </span>
         </div>
         <div className="authority-copy" data-reveal>
           <SectionLabel number="05">Liderança e direção</SectionLabel>
