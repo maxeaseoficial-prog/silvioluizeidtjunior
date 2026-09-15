@@ -9,13 +9,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Página do Método PSV, de Silvio Luiz Eidt Junior, para estruturação profissional de equipes e operações comerciais.",
+          "Método PSV de Silvio Luiz Eidt Junior: escola de vendas B2C para aprender abordagem, comunicação, objeções, negociação e fechamento.",
       },
-      { property: "og:title", content: "Método PSV | Processo, Sistema e Vendas" },
+      { property: "og:title", content: "Método PSV | Escola de Vendas B2C" },
       {
         property: "og:description",
         content:
-          "Processo, Sistema e Vendas para estruturar uma operação comercial com gestão, execução e previsibilidade.",
+          "Aprenda a vender mais, melhor e com mais consistência com o Método PSV, de Silvio Luiz Eidt Junior.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
